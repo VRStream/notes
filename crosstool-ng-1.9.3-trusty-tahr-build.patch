@@ -1,0 +1,65 @@
+diff --git a/scripts/build/binutils/binutils.sh b/scripts/build/binutils/binutils.sh
+index 57d35a5..30b93e5 100644
+--- a/scripts/build/binutils/binutils.sh
++++ b/scripts/build/binutils/binutils.sh
+@@ -5,7 +5,7 @@
+ # Download binutils
+ do_binutils_get() {
+     CT_GetFile "binutils-${CT_BINUTILS_VERSION}"                                        \
+-               {ftp,http}://{ftp.gnu.org/gnu,ftp.kernel.org/pub/linux/devel}/binutils   \
++               http://{ftp.gnu.org/gnu,ftp.kernel.org/pub/linux/devel}/binutils   \
+                ftp://gcc.gnu.org/pub/binutils/{releases,snapshots}
+ }
+ 
+diff --git a/scripts/build/debug/200-duma.sh b/scripts/build/debug/200-duma.sh
+index fe47b5e..1737324 100644
+--- a/scripts/build/debug/200-duma.sh
++++ b/scripts/build/debug/200-duma.sh
+@@ -4,7 +4,7 @@ do_debug_duma_get() {
+     # Downloading an non-existing file from sourceforge will give you an
+     # HTML file containing an error message, instead of returning a 404.
+     # Sigh...
+-    CT_GetFile "duma_${CT_DUMA_VERSION}" .tar.gz http://mesh.dl.sourceforge.net/sourceforge/duma/
++    CT_GetFile "duma_${CT_DUMA_VERSION}" .tar.gz http://excellmedia.dl.sourceforge.net/sourceforge/duma/
+     # Downloading from sourceforge may leave garbage, cleanup
+     CT_DoExecLog ALL rm -f "${CT_TARBALLS_DIR}/showfiles.php"*
+ }
+diff --git a/scripts/build/debug/300-gdb.sh b/scripts/build/debug/300-gdb.sh
+index 5a7d87f..65f4a82 100644
+--- a/scripts/build/debug/300-gdb.sh
++++ b/scripts/build/debug/300-gdb.sh
+@@ -49,7 +49,7 @@ do_debug_gdb_get() {
+ 
+     if [ "${do_expat}" = "y" ]; then
+         CT_GetFile "expat-${CT_DEBUG_GDB_EXPAT_VERSION}" .tar.gz    \
+-                   http://mesh.dl.sourceforge.net/sourceforge/expat/expat/${CT_DEBUG_GDB_EXPAT_VERSION}
++                   http://excellmedia.dl.sourceforge.net/sourceforge/expat/expat/${CT_DEBUG_GDB_EXPAT_VERSION}
+     fi
+ }
+ 
+diff --git a/scripts/build/debug/500-strace.sh b/scripts/build/debug/500-strace.sh
+index 65d4086..3f84ef3 100644
+--- a/scripts/build/debug/500-strace.sh
++++ b/scripts/build/debug/500-strace.sh
+@@ -1,7 +1,7 @@
+ # Build script for strace
+ 
+ do_debug_strace_get() {
+-    CT_GetFile "strace-${CT_STRACE_VERSION}" http://mesh.dl.sourceforge.net/sourceforge/strace/
++    CT_GetFile "strace-${CT_STRACE_VERSION}" http://excellmedia.dl.sourceforge.net/sourceforge/strace/
+     # Downloading from sourceforge leaves garbage, cleanup
+     CT_DoExecLog ALL rm -f "${CT_TARBALLS_DIR}/showfiles.php"*
+ }
+diff --git a/scripts/build/kernel/linux.sh b/scripts/build/kernel/linux.sh
+index a6898d8..182b9d8 100644
+--- a/scripts/build/kernel/linux.sh
++++ b/scripts/build/kernel/linux.sh
+@@ -21,7 +21,7 @@ do_kernel_get() {
+          -a "${CT_KERNEL_LINUX_CUSTOM}" != "y"  \
+        ]; then
+         CT_GetFile "linux-${CT_KERNEL_VERSION}" \
+-                   {ftp,http}://ftp.{de.,eu.,}kernel.org/pub/linux/kernel/v2.{6{,/testing},4,2}
++                   http://www.kernel.org/pub/linux/kernel/v2.{6{,/testing},4,2}
+     fi
+ }
+ 
